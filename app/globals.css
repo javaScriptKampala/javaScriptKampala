@@ -132,3 +132,17 @@
     @apply bg-js-black text-white;
   }
 }
+
+/* Custom animations for gallery */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
