@@ -100,9 +100,9 @@ export const Footer: React.FC = () => {
               EST. 2018 // KLA, UG
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-js-yellow transition-colors"><Twitter size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-js-yellow transition-colors"><Github size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-js-yellow transition-colors"><Linkedin size={20} /></a>
+              <a href="https://x.com/JsKampala" className="text-gray-400 hover:text-js-yellow transition-colors"><Twitter size={20} /></a>
+              <a href="https://github.com/javaScriptKampala" className="text-gray-400 hover:text-js-yellow transition-colors"><Github size={20} /></a>
+              <a href="https://ug.linkedin.com/company/javascript-community-uganda" className="text-gray-400 hover:text-js-yellow transition-colors"><Linkedin size={20} /></a>
             </div>
           </div>
 
@@ -132,7 +132,7 @@ export const Footer: React.FC = () => {
                    <span className="text-xs font-mono text-green-500">OPERATIONAL</span>
                 </div>
                 <div className="text-[10px] text-gray-500 font-mono uppercase">
-                   Next Event: 24 Oct 2025
+                   Next Event: 07 Feb 2026
                 </div>
              </div>
           </div>
