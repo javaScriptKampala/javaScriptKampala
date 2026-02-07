@@ -24,54 +24,30 @@ export default function About() {
 
       {/* Mission & Values */}
       <Section className="bg-[#080808] border-b border-gray-800" noPadding>
-        <div className="grid md:grid-cols-2 gap-0">
-           {/* Mission */}
-           <div className="p-12 md:p-20 border-b md:border-b-0 md:border-r border-gray-800 flex flex-col justify-center relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-2 h-32 bg-js-yellow"></div>
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-8">
-                  <Shield className="text-js-yellow" size={28} />
-                  <Heading level={2} className="mb-0">Our Mission</Heading>
-                </div>
-                <div className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed">
-                   <p className="font-light">
-                      To build a <span className="text-white font-bold">world-class engineering ecosystem</span> in Kampala that rivals any global tech hub.
-                   </p>
-                   <p className="font-light">
-                      We believe in the power of <span className="text-js-yellow font-semibold">open source</span>, radical collaboration, and continuous mentorship. Whether you're shipping production code at a unicorn or just wrote your first function, you have a place here.
-                   </p>
-                </div>
-                <div className="mt-10 flex items-center gap-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-js-yellow"></div>
-                    <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">Est. 2018</span>
-                  </div>
-                  <div className="w-px h-8 bg-gray-800"></div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-js-yellow"></div>
-                    <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">500+ Members</span>
-                  </div>
-                </div>
+        <div className="grid md:grid-cols-2">
+           <div className="p-12 md:p-24 border-b md:border-b-0 md:border-r border-gray-800 flex flex-col justify-center">
+              <Heading level={2} className="mb-8">Our Mission</Heading>
+              <div className="space-y-6 text-gray-400 text-lg font-light leading-relaxed">
+                 <p>
+                    To build a world-class engineering ecosystem in Kampala that rivals any global tech hub.
+                 </p>
+                 <p>
+                    We believe in the power of open source, radical collaboration, and continuous mentorship. Whether you are shipping production code at a unicorn or just wrote your first function, you have a place here.
+                 </p>
               </div>
            </div>
            
-           {/* Values Grid */}
            <div className="grid grid-cols-2">
               {[
-                { icon: Code, title: 'Technical Excellence', desc: 'Best practices only.', color: 'text-blue-400' },
-                { icon: Users, title: 'Radical Inclusion', desc: 'Everyone is welcome.', color: 'text-green-400' },
-                { icon: Heart, title: 'Give Back', desc: 'Open source first.', color: 'text-red-400' },
-                { icon: Globe, title: 'Global Mindset', desc: 'Local roots, global impact.', color: 'text-purple-400' }
+                { icon: Code, title: 'Technical Excellence', desc: 'Best practices only.' },
+                { icon: Users, title: 'Radical Inclusion', desc: 'Everyone is welcome.' },
+                { icon: Heart, title: 'Give Back', desc: 'Open source first.' },
+                { icon: Globe, title: 'Global Mindset', desc: 'Local roots, global impact.' }
               ].map((item, i) => (
-                <div key={i} className="p-8 md:p-10 border-b border-r border-gray-800 hover:bg-[#0a0a0a] transition-all duration-300 group flex flex-col justify-center relative overflow-hidden">
-                   <div className="absolute top-0 left-0 w-0 h-full bg-gradient-to-r from-js-yellow/5 to-transparent group-hover:w-full transition-all duration-500"></div>
-                   <div className="relative z-10">
-                     <div className="mb-6 w-14 h-14 border-2 border-gray-700 group-hover:border-js-yellow flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-                       <item.icon className={`text-gray-600 group-hover:text-js-yellow transition-colors duration-300`} size={26} strokeWidth={2} />
-                     </div>
-                     <h3 className="font-black text-white uppercase tracking-wide mb-3 text-sm group-hover:text-js-yellow transition-colors duration-300">{item.title}</h3>
-                     <p className="text-xs text-gray-500 font-mono uppercase leading-relaxed">{item.desc}</p>
-                   </div>
+                <div key={i} className="p-8 border-b border-r border-gray-800 hover:bg-[#111] transition-colors group flex flex-col justify-center">
+                   <item.icon className="mb-4 text-gray-600 group-hover:text-js-yellow transition-colors" size={32} />
+                   <h3 className="font-bold text-white uppercase tracking-wider mb-2">{item.title}</h3>
+                   <p className="text-xs text-gray-500 font-mono uppercase">{item.desc}</p>
                 </div>
               ))}
            </div>
