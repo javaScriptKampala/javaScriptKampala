@@ -1,9 +1,8 @@
 import React from 'react';
-import { Section, Heading, Card, Button, Badge } from '../../components/UI';
-import { SPONSORS } from '../../data';
+import { Section, Heading, Card, Button, Badge } from '../components/UI';
 import { Check, Star, ArrowRight } from 'lucide-react';
 
-export default function Sponsors() {
+export default function SponsorsComponent() {
   const tiers = [
     { 
         name: 'Bronze', 
@@ -27,34 +26,6 @@ export default function Sponsors() {
 
   return (
     <>
-      <div className="bg-[#050505] border-b border-gray-800 pt-32 pb-20">
-         <Section noPadding>
-            <div className="max-w-4xl">
-               <Badge color="yellow" className="mb-6">Partnership</Badge>
-               <h1 className="text-6xl md:text-8xl font-black text-white mb-8 uppercase leading-[0.85] tracking-tighter">
-                  Fuel The <br/><span className="text-transparent bg-clip-text bg-none stroke-white" style={{WebkitTextStroke: '1px white'}}>Ecosystem</span>
-               </h1>
-               <p className="text-xl text-gray-400 font-light max-w-2xl leading-relaxed">
-                  We are non-profit. Our sponsors make meetups, workshops, and open source projects possible. Join top tech companies in supporting the next generation.
-               </p>
-            </div>
-         </Section>
-      </div>
-
-      <Section className="bg-[#080808] border-b border-gray-800">
-        <Heading level={2} className="mb-12">Current Partners</Heading>
-        <div className="grid md:grid-cols-4 gap-px bg-gray-800 border border-gray-800">
-           {SPONSORS.map((s) => (
-             <div key={s.id} className="p-12 flex flex-col items-center justify-center text-center bg-[#111] hover:bg-[#151515] transition-colors group h-64">
-                <img src={s.logo} alt={s.name} className="max-h-16 max-w-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                    <span className="text-xs font-bold uppercase tracking-widest text-js-yellow block mb-2">{s.tier} Sponsor</span>
-                    <a href={s.url} target="_blank" rel="noreferrer" className="text-xs text-white border-b border-white pb-1 hover:text-gray-300">Visit Profile</a>
-                </div>
-             </div>
-           ))}
-        </div>
-      </Section>
 
       <Section className="bg-[#050505]">
          <div className="text-center mb-16">

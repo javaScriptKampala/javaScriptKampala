@@ -8,8 +8,10 @@ import {
   Star, GitFork
 } from 'lucide-react';
 import { Button, Section, Card, Heading, Badge } from '../components/UI';
-import { EVENTS, BLOG_POSTS, SPONSORS, PROJECTS } from '../data';
-
+import { EVENTS, BLOG_POSTS, PROJECTS } from '../data';
+import { SPONSORS } from '../data';
+import { Check,  } from 'lucide-react';
+import SponsorsComponent from '@/components/sponsers';
 // --- ARCADE MATRIX GAME ---
 const MatrixGame = () => {
   // Responsive Configuration
@@ -410,62 +412,7 @@ const FeaturedEvent = () => {
   );
 };
 
-const MembershipSection = () => (
-  <Section className="bg-[#050505] border-b border-gray-800">
-     <div className="text-center mb-20 max-w-3xl mx-auto">
-        <Heading level={2} className="mb-6">The Network</Heading>
-        <p className="text-gray-400 text-lg font-light leading-relaxed">
-            Choose your path. Whether you are learning, building, or hiring, we have a place for you in the ecosystem.
-        </p>
-     </div>
 
-     <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
-        {/* Tier 1 */}
-        <div className="bg-[#111] border border-gray-800 p-10 flex flex-col hover:border-gray-600 transition-colors h-full">
-           <div className="text-gray-500 font-mono text-xs mb-4 uppercase tracking-widest">/ TIER_01</div>
-           <h3 className="text-2xl font-black text-white uppercase mb-4">Explorer</h3>
-           <p className="text-gray-400 text-sm mb-8 h-12">For students and hobbyists starting their journey into the JavaScript ecosystem.</p>
-           <div className="text-5xl font-black text-white mb-8">$0</div>
-           <ul className="space-y-4 mb-10 flex-grow border-t border-gray-800 pt-8">
-              <li className="flex items-center gap-3 text-gray-400 text-sm font-bold uppercase"><CheckCircle size={16}/> Monthly Meetups</li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm font-bold uppercase"><CheckCircle size={16}/> Discord Access</li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm font-bold uppercase"><CheckCircle size={16}/> Newsletter</li>
-           </ul>
-           <Button variant="outline" className="w-full">Join Free</Button>
-        </div>
-
-        {/* Tier 2 - Pro (Pop out) */}
-        <div className="bg-white border-2 border-white p-10 flex flex-col transform md:-translate-y-6 shadow-[20px_20px_0px_0px_rgba(247,223,30,1)] relative h-full">
-           <div className="absolute top-0 right-0 bg-js-yellow text-black text-xs font-black px-4 py-2 uppercase tracking-widest">Recommended</div>
-           <div className="text-black font-mono text-xs mb-4 uppercase tracking-widest">/ TIER_02</div>
-           <h3 className="text-2xl font-black text-black uppercase mb-4">Professional</h3>
-           <p className="text-gray-600 text-sm mb-8 h-12">For engineers seeking mastery, mentorship, and career acceleration.</p>
-           <div className="text-5xl font-black text-black mb-8">$50<span className="text-lg align-top text-gray-500">/yr</span></div>
-           <ul className="space-y-4 mb-10 flex-grow border-t border-gray-200 pt-8">
-              <li className="flex items-center gap-3 text-black text-sm font-bold uppercase"><CheckCircle size={16}/> Priority Seating</li>
-              <li className="flex items-center gap-3 text-black text-sm font-bold uppercase"><CheckCircle size={16}/> Exclusive Workshops</li>
-              <li className="flex items-center gap-3 text-black text-sm font-bold uppercase"><CheckCircle size={16}/> Mentorship Program</li>
-              <li className="flex items-center gap-3 text-black text-sm font-bold uppercase"><CheckCircle size={16}/> Annual Swag Pack</li>
-           </ul>
-           <Button className="w-full bg-black text-white border-black hover:bg-gray-800 hover:border-gray-800">Get Started</Button>
-        </div>
-
-        {/* Tier 3 */}
-        <div className="bg-[#111] border border-gray-800 p-10 flex flex-col hover:border-gray-600 transition-colors h-full">
-           <div className="text-gray-500 font-mono text-xs mb-4 uppercase tracking-widest">/ TIER_03</div>
-           <h3 className="text-2xl font-black text-white uppercase mb-4">Partner</h3>
-           <p className="text-gray-400 text-sm mb-8 h-12">For organizations looking to hire talent and support the local ecosystem.</p>
-           <div className="text-5xl font-black text-white mb-8">CUSTOM</div>
-           <ul className="space-y-4 mb-10 flex-grow border-t border-gray-800 pt-8">
-              <li className="flex items-center gap-3 text-gray-400 text-sm font-bold uppercase"><CheckCircle size={16}/> Hiring Pipeline</li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm font-bold uppercase"><CheckCircle size={16}/> Brand Visibility</li>
-              <li className="flex items-center gap-3 text-gray-400 text-sm font-bold uppercase"><CheckCircle size={16}/> Speaking Slots</li>
-           </ul>
-           <Button variant="outline" className="w-full">Contact Us</Button>
-        </div>
-     </div>
-  </Section>
-);
 
 const Projects = () => (
   <Section className="bg-[#080808] border-b border-gray-800">
@@ -554,7 +501,8 @@ export default function Home() {
       <Hero />
       <MetricsStrip />
       <FeaturedEvent />
-      <MembershipSection />
+      <SponsorsComponent />
+
       <Projects />
       <LatestBlog />
       <SponsorsStrip />
