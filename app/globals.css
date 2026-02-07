@@ -7,7 +7,7 @@
 /* JavaScript Branding Colors */
 @theme inline {
   /* JS Yellow - Official JavaScript color */
-  --color-js-yellow: #F7DF1E;
+  --color-js-yellow: #f7df1e;
   /* JS Black - Deep black for backgrounds */
   --color-js-black: #000000;
   --color-background: var(--background);
@@ -94,31 +94,31 @@
   --card-foreground: #ffffff;
   --popover: #111111;
   --popover-foreground: #ffffff;
-  --primary: #F7DF1E;
+  --primary: #f7df1e;
   --primary-foreground: #000000;
   --secondary: #1a1a1a;
   --secondary-foreground: #ffffff;
   --muted: #1a1a1a;
   --muted-foreground: #888888;
-  --accent: #F7DF1E;
+  --accent: #f7df1e;
   --accent-foreground: #000000;
   --destructive: #ef4444;
   --border: #222222;
   --input: #222222;
-  --ring: #F7DF1E;
-  --chart-1: #F7DF1E;
+  --ring: #f7df1e;
+  --chart-1: #f7df1e;
   --chart-2: #ffffff;
   --chart-3: #888888;
   --chart-4: #444444;
   --chart-5: #222222;
   --sidebar: #0a0a0a;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #F7DF1E;
+  --sidebar-primary: #f7df1e;
   --sidebar-primary-foreground: #000000;
   --sidebar-accent: #1a1a1a;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #222222;
-  --sidebar-ring: #F7DF1E;
+  --sidebar-ring: #f7df1e;
 }
 
 @layer base {

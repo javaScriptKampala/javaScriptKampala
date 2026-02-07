@@ -136,8 +136,8 @@ export const SPONSORS: Sponsor[] = [
     id: '4',
     name: 'Andela',
     tier: 'Bronze',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Andela_Logo.svg',
-    url: '#',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Andela_logo.png',
+    url: 'https://www.andela.com/',
     description: 'Connecting talent.'
   }
 ];
