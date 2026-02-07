@@ -539,9 +539,9 @@ const SponsorsStrip = () => (
   <div className="py-24 bg-js-yellow text-black border-t border-black">
     <div className="max-w-7xl mx-auto px-4 text-center">
        <div className="text-xs font-black uppercase tracking-[0.3em] mb-12 border-b-2 border-black inline-block pb-3">Powered By</div>
-       <div className="flex flex-wrap justify-center gap-16 md:gap-24 grayscale opacity-80 mix-blend-multiply">
+       <div className="flex flex-col md:flex-row flex-wrap justify-center gap-16 md:gap-24 opacity-80 mix-blend-multiply">
          {SPONSORS.map(s => (
-           <img key={s.id} src={s.logo} alt={s.name} className="h-8 md:h-12 object-contain hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+           <img key={s.id} src={s.logo} alt={s.name} className="h-8 md:h-12 object-contain hover:grayscale hover:opacity-100 transition-all duration-300" />
          ))}
        </div>
     </div>
