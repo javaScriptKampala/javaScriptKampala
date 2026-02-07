@@ -316,41 +316,111 @@ const Hero = () => {
   );
 };
 
-const MetricsStrip = () => (
-    <div className="bg-js-yellow border-b border-gray-800 py-16">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center border-r border-black/10 last:border-0 p-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                    <Users size={20} className="text-black/50" />
-                    <div className="text-5xl font-black text-black tracking-tighter">5K+</div>
-                </div>
-                <div className="text-xs font-black uppercase tracking-widest text-black/60">Active Members</div>
-            </div>
-            <div className="text-center border-r border-black/10 last:border-0 p-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                    <Calendar size={20} className="text-black/50" />
-                    <div className="text-5xl font-black text-black tracking-tighter">120+</div>
-                </div>
-                <div className="text-xs font-black uppercase tracking-widest text-black/60">Events Hosted</div>
-            </div>
-            <div className="text-center border-r border-black/10 last:border-0 p-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                    <Terminal size={20} className="text-black/50" />
-                    <div className="text-5xl font-black text-black tracking-tighter">50+</div>
-                </div>
-                <div className="text-xs font-black uppercase tracking-widest text-black/60">Open Projects</div>
-            </div>
-            <div className="text-center md:border-r-0 p-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                    <Activity size={20} className="text-black/50" />
-                    <div className="text-5xl font-black text-black tracking-tighter">7</div>
-                </div>
-                <div className="text-xs font-black uppercase tracking-widest text-black/60">Years Active</div>
-            </div>
-        </div>
-    </div>
-);
+// const MetricsStrip = () => (
+//     <div className="bg-js-yellow border-b border-gray-800 py-16">
+//         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+//             <div className="text-center border-r border-black/10 last:border-0 p-4">
+//                 <div className="flex items-center justify-center gap-2 mb-2">
+//                     <Users size={20} className="text-black/50" />
+//                     <div className="text-5xl font-black text-black tracking-tighter">5K+</div>
+//                 </div>
+//                 <div className="text-xs font-black uppercase tracking-widest text-black/60">Active Members</div>
+//             </div>
+//             <div className="text-center border-r border-black/10 last:border-0 p-4">
+//                 <div className="flex items-center justify-center gap-2 mb-2">
+//                     <Calendar size={20} className="text-black/50" />
+//                     <div className="text-5xl font-black text-black tracking-tighter">120+</div>
+//                 </div>
+//                 <div className="text-xs font-black uppercase tracking-widest text-black/60">Events Hosted</div>
+//             </div>
+//             <div className="text-center border-r border-black/10 last:border-0 p-4">
+//                 <div className="flex items-center justify-center gap-2 mb-2">
+//                     <Terminal size={20} className="text-black/50" />
+//                     <div className="text-5xl font-black text-black tracking-tighter">50+</div>
+//                 </div>
+//                 <div className="text-xs font-black uppercase tracking-widest text-black/60">Open Projects</div>
+//             </div>
+//             <div className="text-center md:border-r-0 p-4">
+//                 <div className="flex items-center justify-center gap-2 mb-2">
+//                     <Activity size={20} className="text-black/50" />
+//                     <div className="text-5xl font-black text-black tracking-tighter">7</div>
+//                 </div>
+//                 <div className="text-xs font-black uppercase tracking-widest text-black/60">Years Active</div>
+//             </div>
+//         </div>
+//     </div>
+// );
 
+const MetricsStrip = () => {
+  const [counts, setCounts] = useState([0, 0, 0, 0]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+  
+  const stats = [
+    { target: 5000, label: 'Active Members', icon: Users, suffix: '+' },
+    { target: 120, label: 'Events Hosted', icon: Calendar, suffix: '+' },
+    { target: 50, label: 'Open Projects', icon: Terminal, suffix: '+' },
+    { target: 7, label: 'Years Active', icon: Activity, suffix: '' },
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          
+          const durations = [2000, 1800, 1600, 1400];
+          stats.forEach((stat, index) => {
+            const duration = durations[index];
+            const step = stat.target / (duration / 20); // Update every 20ms
+            let current = 0;
+            
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= stat.target) {
+                current = stat.target;
+                clearInterval(timer);
+              }
+              
+              setCounts(prev => {
+                const newCounts = [...prev];
+                newCounts[index] = Math.floor(current);
+                return newCounts;
+              });
+            }, 20);
+          });
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [hasAnimated]);
+
+  return (
+    <div ref={ref} className="bg-js-yellow border-b border-gray-800 py-16">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat, index) => (
+          <div key={index} className="text-center border-r border-black/10 last:border-0 p-4">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <stat.icon size={20} className="text-black/50" />
+              <div className="text-5xl font-black text-black tracking-tighter">
+                {counts[index].toLocaleString()}{stat.suffix}
+              </div>
+            </div>
+            <div className="text-xs font-black uppercase tracking-widest text-black/60">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 const FeaturedEvent = () => {
   const nextEvent = EVENTS.find(e => e.status === 'upcoming');
   if (!nextEvent) return null;
