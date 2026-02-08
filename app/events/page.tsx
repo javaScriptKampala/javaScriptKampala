@@ -112,10 +112,10 @@ export default function Events() {
         </Section>
       )}
 
-      {/* No Events Fallback */}
       {upcomingEvents.length === 0 && pastEvents.length === 0 && (
         <Section className="bg-[#080808]">
-          <div className="text-center py-20">
+          <div className="text-center py-20
+      {/* No Events Fallback */}">
             <p className="text-gray-400 text-lg">No events scheduled at this time. Check back soon!</p>
           </div>
         </Section>
