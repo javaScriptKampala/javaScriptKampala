@@ -100,9 +100,9 @@ export const Footer: React.FC = () => {
               EST. 2018 // KLA, UG
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-js-yellow transition-colors"><Twitter size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-js-yellow transition-colors"><Github size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-js-yellow transition-colors"><Linkedin size={20} /></a>
+              <a href="https://x.com/JsKampala" className="text-gray-400 hover:text-js-yellow transition-colors"><Twitter size={20} /></a>
+              <a href="https://github.com/javascriptkampala" className="text-gray-400 hover:text-js-yellow transition-colors"><Github size={20} /></a>
+              <a href="https://www.linkedin.com/company/javascript-community-uganda" className="text-gray-400 hover:text-js-yellow transition-colors"><Linkedin size={20} /></a>
             </div>
           </div>
 
