@@ -9,6 +9,9 @@ import {
 } from 'lucide-react';
 import { Button, Section, Card, Heading, Badge } from '../components/UI';
 import { EVENTS, BLOG_POSTS, SPONSORS, PROJECTS } from '../data';
+import SponsorsComponent from '@/components/sponsers';
+
+
 const HeroVideo = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
