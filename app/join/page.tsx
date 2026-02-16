@@ -35,9 +35,9 @@ export default function Join() {
              <h2 className="text-3xl font-black text-white mb-8 uppercase border-l-4 border-js-yellow pl-6">Social Links</h2>
              <div className="grid gap-px bg-gray-800 border border-gray-800">
                {[
-                   { icon: Twitter, label: 'Twitter / X', link: '#' },
-                   { icon: Linkedin, label: 'LinkedIn', link: '#' },
-                   { icon: Github, label: 'GitHub Org', link: 'https://github.com/kampala-js' }
+                   { icon: Twitter, label: 'Twitter / X', link: 'https://x.com/JsKampala' },
+                   { icon: Linkedin, label: 'LinkedIn', link: 'https://www.linkedin.com/company/javascript-community-uganda' },
+                   { icon: Github, label: 'GitHub Org', link: 'https://github.com/javaScriptKampala' }
                ].map((item, i) => (
                    <a key={i} href={item.link} className="flex items-center justify-between p-8 bg-[#111] hover:bg-js-yellow hover:text-black transition-colors group">
                         <div className="flex items-center gap-4">

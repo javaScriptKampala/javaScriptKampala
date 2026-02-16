@@ -15,11 +15,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: "JavaScript Kampala",
-  description: "The premier engineering collective in Uganda. We don't just write code; we architect ecosystems and empower the next generation of builders.",
+  description: "The premier engineering collective in Uganda.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
+
 
 export default function RootLayout({
   children,
