@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight, Calendar, Zap, Github, CheckCircle, Ticket, MapPin,
