@@ -132,7 +132,7 @@ export const Footer: React.FC = () => {
                    <span className="text-xs font-mono text-green-500">OPERATIONAL</span>
                 </div>
                 <div className="text-[10px] text-gray-500 font-mono uppercase">
-                   Next Event: 24 Oct 2025
+                   Next Event: 07 Feb 2026
                 </div>
              </div>
           </div>
