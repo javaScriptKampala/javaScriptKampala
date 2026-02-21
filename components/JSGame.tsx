@@ -97,49 +97,49 @@ export default function JSGame() {
     }
   }, []);
 
-  const drawFrame = useCallback((ctx: CanvasRenderingContext2D, w: number, h: number) => {
-    ctx.fillStyle = CANVAS_BG;
-    ctx.fillRect(0, 0, w, h);
+  const gameLoopRef = useRef<() => void>(() => {});
 
-    for (const logo of logosRef.current) {
-      ctx.fillStyle = JS_YELLOW;
-      ctx.fillRect(logo.x, logo.y, logo.size, logo.size);
-      ctx.fillStyle = "#000";
-      ctx.font = "bold 16px monospace";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("JS", logo.x + logo.size / 2, logo.y + logo.size / 2);
-    }
+  useEffect(() => {
+    gameLoopRef.current = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
 
-    ctx.fillStyle = "#fff";
-    ctx.font = "bold 18px monospace";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    ctx.fillText(`Score: ${scoreRef.current}`, 16, 16);
+      if (!pausedRef.current) {
+        const w = canvas.width;
+        const h = canvas.height;
 
-    ctx.textAlign = "right";
-    ctx.fillText(`${timeRef.current}s`, w - 16, 16);
-  }, []);
+        logosRef.current = logosRef.current
+          .map((logo) => ({ ...logo, y: logo.y + logo.speed }))
+          .filter((logo) => logo.y < h + logo.size);
 
-  const gameLoop = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+        // draw
+        ctx.fillStyle = CANVAS_BG;
+        ctx.fillRect(0, 0, w, h);
 
-    if (!pausedRef.current) {
-      const w = canvas.width;
-      const h = canvas.height;
+        for (const logo of logosRef.current) {
+          ctx.fillStyle = JS_YELLOW;
+          ctx.fillRect(logo.x, logo.y, logo.size, logo.size);
+          ctx.fillStyle = "#000";
+          ctx.font = "bold 16px monospace";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("JS", logo.x + logo.size / 2, logo.y + logo.size / 2);
+        }
 
-      logosRef.current = logosRef.current
-        .map((logo) => ({ ...logo, y: logo.y + logo.speed }))
-        .filter((logo) => logo.y < h + logo.size);
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 18px monospace";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        ctx.fillText(`Score: ${scoreRef.current}`, 16, 16);
+        ctx.textAlign = "right";
+        ctx.fillText(`${timeRef.current}s`, w - 16, 16);
+      }
 
-      drawFrame(ctx, w, h);
-    }
-
-    rafRef.current = requestAnimationFrame(gameLoop);
-  }, [drawFrame]);
+      rafRef.current = requestAnimationFrame(gameLoopRef.current);
+    };
+  });
 
   const spawnLogo = useCallback(() => {
     const canvas = canvasRef.current;
@@ -186,8 +186,8 @@ export default function JSGame() {
       }
     }, 1000);
 
-    rafRef.current = requestAnimationFrame(gameLoop);
-  }, [clearTimers, gameLoop, spawnLogo]);
+    rafRef.current = requestAnimationFrame(gameLoopRef.current);
+  }, [clearTimers, spawnLogo]);
 
   const handleCanvasClick = useCallback(
     (e: React.MouseEvent<HTMLCanvasElement>) => {
