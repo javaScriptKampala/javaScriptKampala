@@ -63,7 +63,7 @@ export default function About() {
         
         <div className="grid md:grid-cols-3 gap-8">
           {LEADERS.map((leader, i) => (
-            <div key={i} className="group">
+            <div key={leader.name} className="group">
                <div className="aspect-square w-full relative flex items-center justify-center p-8">
                   <div className="w-full aspect-square rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-js-yellow transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(247,223,30,0.4)]">
                     <img src={leader.image} alt={leader.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
