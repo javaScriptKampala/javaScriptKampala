@@ -63,15 +63,17 @@ export default function About() {
         
         <div className="grid md:grid-cols-3 gap-8">
           {LEADERS.map((leader, i) => (
-            <div key={i} className="group border border-gray-800 bg-[#0a0a0a] hover:border-js-yellow transition-colors">
-               <div className="aspect-square w-full relative overflow-hidden bg-[#111] border-b border-gray-800">
-                  <img src={leader.image} alt={leader.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal" />
+            <div key={leader.name} className="group">
+               <div className="aspect-square w-full relative flex items-center justify-center p-8">
+                  <div className="w-full aspect-square rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-js-yellow transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(247,223,30,0.4)]">
+                    <img src={leader.image} alt={leader.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
+                  </div>
+                  <div className="absolute bottom-4 right-4 w-12 h-12 bg-js-yellow flex items-center justify-center text-black font-bold group-hover:scale-110 transition-transform duration-300">
+                    <Terminal size={20} />
+                  </div>
                </div>
-               <div className="p-6 relative">
-                 <div className="absolute top-0 right-0 -translate-y-1/2 mr-6 w-10 h-10 bg-js-yellow flex items-center justify-center text-black">
-                    <Terminal size={18} />
-                 </div>
-                 <h3 className="text-xl font-black text-white uppercase mb-1">{leader.name}</h3>
+               <div className="p-6">
+                 <h3 className="text-xl font-black text-white uppercase mb-1 group-hover:text-js-yellow transition-colors duration-300">{leader.name}</h3>
                  <p className="text-js-yellow text-xs font-bold uppercase tracking-widest">{leader.role}</p>
                </div>
             </div>
