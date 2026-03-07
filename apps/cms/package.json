@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "pnpm with-env next dev --webpack --port 3002",
+    "dev": "pnpm with-env next dev --port 3002",
     "build": "pnpm with-env next build",
     "start": "pnpm with-env next start --port 3002",
     "generate:types": "payload generate:types",

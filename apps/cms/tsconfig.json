@@ -6,12 +6,32 @@
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@payload-config": [
+        "./src/payload.config.ts"
+      ]
+    },
+    "allowJs": true,
+    "noEmit": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "next.config.ts"],
-  "exclude": ["node_modules", "dist", ".next"]
+  "include": [
+    "next.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next"
+  ]
 }
