@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Heading, Card, Button, Badge } from '../components/UI';
+import { Section, Heading, Card, Button, Badge } from './UI';
 import { Check, Star, ArrowRight } from 'lucide-react';
 
 export default function SponsorsComponent() {
