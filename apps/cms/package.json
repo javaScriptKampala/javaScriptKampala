@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "pnpm with-env  PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon --exec tsx src/server.ts",
-    "build": "payload build && tsc",
-    "start": "pnpm with-env  node dist/server.js",
+    "dev": "pnpm with-env next dev --webpack --port 3002",
+    "build": "pnpm with-env next build",
+    "start": "pnpm with-env next start --port 3002",
     "generate:types": "payload generate:types",
     "check-types": "tsc --noEmit",
     "migrate": "pnpm with-env payload migrate",
@@ -17,19 +17,24 @@
   "dependencies": {
     "@jskla/config": "workspace:*",
     "@payloadcms/db-postgres": "^3.0.0",
+    "@payloadcms/next": "^3.79.0",
     "@payloadcms/richtext-lexical": "^3.0.0",
     "@payloadcms/storage-s3": "^3.0.0",
     "cross-env": "^7.0.3",
     "dotenv-cli": "^8.0.0",
     "express": "^4.21.0",
+    "next": "15.4.11",
     "payload": "^3.0.0",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@jskla/typescript-config": "workspace:*",
     "@types/express": "^5.0.0",
     "@types/node": "^22.15.3",
     "nodemon": "^3.1.0",
+    "sass": "^1.97.3",
     "tsx": "^4.19.0",
     "typescript": "5.9.2"
   }
