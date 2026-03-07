@@ -1,9 +1,11 @@
 import React from 'react';
 import { Section, Heading, Card, Button, Badge } from '../../components/UI';
-import { SPONSORS } from '../../data';
+import { fetchSponsors } from '../../lib/data';
 import { Check, Star, ArrowRight } from 'lucide-react';
 
-export default function Sponsors() {
+export default async function Sponsors() {
+  const SPONSORS = await fetchSponsors();
+
   const tiers = [
     { 
         name: 'Bronze', 

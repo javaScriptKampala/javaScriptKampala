@@ -6,7 +6,10 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "turbo run check-types",
+    "migrate": "pnpm --filter @jskla/cms migrate",
+    "migrate:create": "pnpm --filter @jskla/cms migrate:create",
+    "postinstall": "pnpm --filter @jskla/cms generate:types"
   },
   "devDependencies": {
     "prettier": "^3.7.4",

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Github, Twitter, Linkedin, ArrowUp } from 'lucide-react';
 
-const NAV_ITEMS = [
+const DEFAULT_NAV_ITEMS = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Events', path: '/events' },
@@ -16,7 +16,20 @@ const NAV_ITEMS = [
   { name: 'Join', path: '/join', isCta: true },
 ];
 
-export const Header: React.FC = () => {
+export interface NavItem {
+  name: string;
+  path: string;
+  isCta?: boolean;
+}
+
+export interface FooterData {
+  socialLinks?: { twitter?: string; github?: string; linkedin?: string };
+  nextEventDate?: string;
+  copyright?: string;
+}
+
+export const Header: React.FC<{ navItems?: NavItem[] }> = ({ navItems }) => {
+  const NAV_ITEMS = navItems && navItems.length > 0 ? navItems : DEFAULT_NAV_ITEMS;
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -84,8 +97,15 @@ export const Header: React.FC = () => {
   );
 };
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<{ footerData?: FooterData }> = ({ footerData }) => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'auto' });
+  const socials = footerData?.socialLinks ?? {
+    twitter: 'https://x.com/JsKampala',
+    github: 'https://github.com/javascriptkampala',
+    linkedin: 'https://www.linkedin.com/company/javascript-community-uganda',
+  };
+  const nextEvent = footerData?.nextEventDate ?? '07 Feb 2026';
+  const copyright = footerData?.copyright ?? `© ${new Date().getFullYear()} JavaScript Kampala.`;
 
   return (
     <footer className="bg-black border-t border-gray-800 pt-20 pb-10">
@@ -100,9 +120,9 @@ export const Footer: React.FC = () => {
               EST. 2018 // KLA, UG
             </p>
             <div className="flex gap-4">
-              <a href="https://x.com/JsKampala" className="text-gray-400 hover:text-js-yellow transition-colors"><Twitter size={20} /></a>
-              <a href="https://github.com/javascriptkampala" className="text-gray-400 hover:text-js-yellow transition-colors"><Github size={20} /></a>
-              <a href="https://www.linkedin.com/company/javascript-community-uganda" className="text-gray-400 hover:text-js-yellow transition-colors"><Linkedin size={20} /></a>
+              {socials.twitter && <a href={socials.twitter} className="text-gray-400 hover:text-js-yellow transition-colors"><Twitter size={20} /></a>}
+              {socials.github && <a href={socials.github} className="text-gray-400 hover:text-js-yellow transition-colors"><Github size={20} /></a>}
+              {socials.linkedin && <a href={socials.linkedin} className="text-gray-400 hover:text-js-yellow transition-colors"><Linkedin size={20} /></a>}
             </div>
           </div>
 
@@ -132,7 +152,7 @@ export const Footer: React.FC = () => {
                    <span className="text-xs font-mono text-green-500">OPERATIONAL</span>
                 </div>
                 <div className="text-[10px] text-gray-500 font-mono uppercase">
-                   Next Event: 07 Feb 2026
+                   Next Event: {nextEvent}
                 </div>
              </div>
           </div>
@@ -140,7 +160,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-xs font-mono uppercase">
-            © {new Date().getFullYear()} JavaScript Kampala.
+            {copyright}
           </p>
           <button onClick={scrollToTop} className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 hover:text-white transition-colors">
             Top <ArrowUp size={14} />
@@ -151,14 +171,20 @@ export const Footer: React.FC = () => {
   );
 };
 
-export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export interface LayoutProps {
+  children: React.ReactNode;
+  navItems?: NavItem[];
+  footerData?: FooterData;
+}
+
+export const Layout: React.FC<LayoutProps> = ({ children, navItems, footerData }) => {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white font-sans selection:bg-js-yellow selection:text-black">
-      <Header />
+      <Header navItems={navItems} />
       <main className="flex-grow pt-20">
         {children}
       </main>
-      <Footer />
+      <Footer footerData={footerData} />
     </div>
   );
 };

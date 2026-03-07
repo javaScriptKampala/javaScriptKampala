@@ -1,9 +1,10 @@
 import React from 'react';
 import { Section, Heading, Card, Button, Badge } from '../../components/UI';
-import { LEADERS } from '../../data';
+import { fetchLeaders } from '../../lib/data';
 import { Users, Code, Heart, Shield, Terminal, Globe, Cpu } from 'lucide-react';
 
-export default function About() {
+export default async function About() {
+  const LEADERS = await fetchLeaders();
   return (
     <>
       {/* Hero Section */}

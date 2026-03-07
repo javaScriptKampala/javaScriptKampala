@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "pnpm with-env  next dev --port 3000",
+    "build": "next build --turbo",
+    "start": "pnpm with-env  next start --port 3000",
+    "lint": "eslint",
+    "check-types": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@jskla/config": "workspace:*",
+    "@jskla/types": "workspace:*",
     "@base-ui/react": "^1.1.0",
+     "cross-env": "^7.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",

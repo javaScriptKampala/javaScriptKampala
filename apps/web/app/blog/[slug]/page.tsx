@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Section, Badge } from '../../../components/UI';
-import { BLOG_POSTS } from '../../../data';
+import { fetchBlogPost, isRichTextContent } from '../../../lib/data';
+import { RichText } from '../../../lib/rich-text';
 import { ArrowLeft, User, Calendar, Clock, Hash } from 'lucide-react';
 
-// Simple markdown renderer
+// Simple markdown renderer (fallback for plain string content)
 const MarkdownRenderer = ({ content }: { content: string }) => {
   return (
     <div className="prose prose-invert prose-yellow max-w-none">
@@ -24,7 +25,7 @@ interface BlogPostPageProps {
 
 export default async function BlogPost({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = BLOG_POSTS.find(p => p.slug === slug);
+  const post = await fetchBlogPost(slug);
 
   if (!post) {
     notFound();
@@ -71,7 +72,11 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
       <Section className="max-w-5xl mx-auto py-16">
          <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8">
-                <MarkdownRenderer content={post.content} />
+                {isRichTextContent(post.content) ? (
+                  <RichText content={post.content} />
+                ) : (
+                  <MarkdownRenderer content={typeof post.content === 'string' ? post.content : ''} />
+                )}
             </div>
             <div className="lg:col-span-4 hidden lg:block">
                <div className="sticky top-24 p-6 border border-gray-800 bg-[#0a0a0a]">
@@ -89,9 +94,6 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
   );
 }
 
-// Generate static params for all blog posts
-export function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({
-    slug: post.slug,
-  }));
-}
+// Generate static params — at build time we don't have CMS data,
+// so pages are rendered on demand via ISR.
+export const dynamicParams = true;

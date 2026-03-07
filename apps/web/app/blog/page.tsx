@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { Section, Badge } from '../../components/UI';
-import { BLOG_POSTS } from '../../data';
+import { fetchBlogPosts } from '../../lib/data';
 import { ArrowRight } from 'lucide-react';
 
-export default function BlogList() {
+export default async function BlogList() {
+  const BLOG_POSTS = await fetchBlogPosts();
   return (
     <div className="min-h-screen bg-js-black">
       {/* Hero */}

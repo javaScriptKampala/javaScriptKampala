@@ -1,10 +1,11 @@
 import { Section, Heading, Badge, Button } from '../../components/UI';
-import { EVENTS } from '../../data';
+import { fetchEvents } from '../../lib/data';
 import { Calendar, MapPin, Ticket, Clock } from 'lucide-react';
 
-export default function Events() {
-  const upcomingEvents = EVENTS.filter(e => e.status === 'upcoming');
-  const pastEvents = EVENTS.filter(e => e.status === 'past');
+export default async function Events() {
+  const allEvents = await fetchEvents();
+  const upcomingEvents = allEvents.filter(e => e.status === 'upcoming');
+  const pastEvents = allEvents.filter(e => e.status === 'past');
 
   return (
     <>
