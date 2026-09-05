@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Github, Twitter, Linkedin, ArrowUp, ShoppingBag } from 'lucide-react';
+import { Menu, X, Github, Twitter, Linkedin, ArrowUp } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 const NAV_ITEMS = [
@@ -24,6 +24,7 @@ export const Header: React.FC = () => {
   const { totalItemCount } = useCart();
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
   }, [pathname]);
 

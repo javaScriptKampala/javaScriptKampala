@@ -26,6 +26,7 @@ export const ProductDetailModal: React.FC = () => {
     if (product) {
       if (product.variants && product.variants.length > 0) {
         const initial = product.variants.find((v) => v.id === product.defaultVariantId) || product.variants[0];
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSelectedVariant(initial);
       } else {
         setSelectedVariant(undefined);

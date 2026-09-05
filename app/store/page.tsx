@@ -20,7 +20,7 @@ import {
   HelpCircle,
   Gift,
 } from 'lucide-react';
-import { Section, Heading, Card, Button, Badge } from '@/components/UI';
+import { Section, Heading, Card, Badge } from '@/components/UI';
 import { useCart } from '@/context/CartContext';
 import { STORE_PRODUCTS } from '@/data/storeProducts';
 import { ProductCategory } from '@/types/store';

@@ -64,6 +64,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
       if (savedCart) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setItems(JSON.parse(savedCart));
       }
       const savedCurr = localStorage.getItem(CURRENCY_STORAGE_KEY);
