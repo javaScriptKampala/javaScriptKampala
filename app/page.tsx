@@ -107,7 +107,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl text-gray-400 mb-12 font-light leading-relaxed max-w-lg border-l-4 border-js-yellow pl-6">
-              The premier engineering collective in Uganda. We don't just write code; we architect ecosystems and empower the next generation of builders.
+              The premier engineering collective in Uganda. We don&apos;t just write code; we architect ecosystems and empower the next generation of builders.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -212,7 +212,7 @@ const FeaturedEvent = () => {
           <div className="mb-8 flex items-center gap-3">
             <Badge color="yellow">Upcoming Summit</Badge>
             <span className="text-gray-500 font-mono text-xs uppercase tracking-wider">
-              Don't miss out
+              Don&apos;t miss out
             </span>
           </div>
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 uppercase leading-[0.9] tracking-tighter">

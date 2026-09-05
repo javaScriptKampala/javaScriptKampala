@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Github, Twitter, Linkedin, ArrowUp } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 const NAV_ITEMS = [
   { name: 'Home', path: '/' },
@@ -12,6 +13,7 @@ const NAV_ITEMS = [
   { name: 'Learning', path: '/learning' },
   { name: 'Blog', path: '/blog' },
   { name: 'Gallery', path: '/gallery' },
+  { name: 'Store', path: '/store', isStore: true },
   { name: 'Sponsors', path: '/sponsors' },
   { name: 'Join', path: '/join', isCta: true },
 ];
@@ -19,8 +21,10 @@ const NAV_ITEMS = [
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { totalItemCount } = useCart();
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
   }, [pathname]);
 
@@ -46,10 +50,15 @@ export const Header: React.FC = () => {
               className={
                 item.isCta
                   ? `ml-4 px-6 py-2.5 bg-js-yellow text-black font-bold uppercase text-xs tracking-widest hover:bg-white transition-colors border-2 border-js-yellow hover:border-white`
-                  : `text-xs font-bold uppercase tracking-widest transition-colors hover:text-js-yellow ${isActive(item.path) ? 'text-js-yellow border-b-2 border-js-yellow py-7' : 'text-gray-400'}`
+                  : `text-xs font-bold uppercase tracking-widest transition-colors hover:text-js-yellow flex items-center gap-1.5 ${isActive(item.path) ? 'text-js-yellow border-b-2 border-js-yellow py-7' : 'text-gray-400'}`
               }
             >
-              {item.name}
+              <span>{item.name}</span>
+              {'isStore' in item && item.isStore && totalItemCount > 0 && (
+                <span className="bg-js-yellow text-black text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">
+                  {totalItemCount}
+                </span>
+              )}
             </Link>
           ))}
         </nav>
@@ -66,7 +75,7 @@ export const Header: React.FC = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className={`block px-8 py-4 text-sm font-bold uppercase tracking-widest border-b border-gray-900 ${
+                className={`flex items-center justify-between px-8 py-4 text-sm font-bold uppercase tracking-widest border-b border-gray-900 ${
                   item.isCta
                     ? 'bg-js-yellow text-black hover:bg-white'
                     : isActive(item.path)
@@ -74,7 +83,12 @@ export const Header: React.FC = () => {
                     : 'text-white hover:bg-gray-900 hover:text-js-yellow'
                 }`}
               >
-                {item.name}
+                <span>{item.name}</span>
+                {'isStore' in item && item.isStore && totalItemCount > 0 && (
+                  <span className="bg-js-yellow text-black text-[10px] font-black px-2 py-0.5 rounded-full">
+                    {totalItemCount}
+                  </span>
+                )}
               </Link>
             ))}
           </div>
@@ -111,6 +125,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm text-gray-500 font-bold uppercase tracking-wider">
               <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
               <li><Link href="/events" className="hover:text-white transition-colors">Events</Link></li>
+              <li><Link href="/store" className="hover:text-white transition-colors">Store</Link></li>
               <li><Link href="/join" className="hover:text-white transition-colors">Join</Link></li>
             </ul>
           </div>
