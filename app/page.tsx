@@ -215,8 +215,15 @@ const FeaturedEvent = () => {
       <div className="grid lg:grid-cols-2 min-h-150">
         {/* Text Content Left */}
         <div className="p-12 lg:p-24 flex flex-col justify-center bg-[#080808]">
-          <div className="mb-8 flex items-center gap-3">
-            <Badge color="yellow">Upcoming Summit</Badge>
+          <div className="mb-8 flex flex-wrap items-center gap-3">
+            <Badge color="yellow">
+              {nextEvent.format ? "Upcoming Tournament" : "Upcoming Event"}
+            </Badge>
+            {nextEvent.rules && (
+              <span className="bg-red-500/10 border border-red-500/40 text-red-400 text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-1">
+                Live 1v1 • Zero AI
+              </span>
+            )}
             <span className="text-gray-500 font-mono text-xs uppercase tracking-wider">
               Don&apos;t miss out
             </span>
@@ -236,8 +243,12 @@ const FeaturedEvent = () => {
                 </div>
                 <div className="text-white text-lg font-bold">
                   {new Date(nextEvent.date).toLocaleDateString("en-UG", {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
                     timeZone: "Africa/Kampala",
-                  })}
+                  })}{" "}
                   — {nextEvent.time}
                 </div>
               </div>
@@ -252,6 +263,9 @@ const FeaturedEvent = () => {
                 </div>
                 <div className="text-white text-lg font-bold">
                   {nextEvent.venue}
+                </div>
+                <div className="text-xs text-gray-400 font-mono">
+                  {nextEvent.address}
                 </div>
               </div>
             </div>
@@ -270,7 +284,7 @@ const FeaturedEvent = () => {
               href={`/events/${nextEvent.slug}`}
               className="w-full sm:w-auto"
             >
-              Event Details
+              Tournament Intel &amp; Rules
             </Button>
           </div>
         </div>

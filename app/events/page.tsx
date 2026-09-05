@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import { Section, Heading, Badge, Button } from '../../components/UI';
 import { EVENTS } from '../../data';
-import { Calendar, MapPin, Ticket, Clock } from 'lucide-react';
+import { Calendar, MapPin, Ticket, Clock, Swords, ArrowRight } from 'lucide-react';
 
 export default function Events() {
   const upcomingEvents = EVENTS.filter(e => e.status === 'upcoming');
@@ -19,7 +20,7 @@ export default function Events() {
               <span className="text-transparent bg-clip-text bg-none stroke-white" style={{WebkitTextStroke: '1px white'}}>Events</span>
             </h1>
             <p className="text-xl text-gray-400 font-light max-w-2xl leading-relaxed border-l-4 border-js-yellow pl-6">
-              Join us for meetups, workshops, and conferences. Build skills, make connections, and grow your network.
+              Join us for meetups, workshops, and tournaments. Build skills, make connections, and test your code under pressure.
             </p>
           </div>
         </Section>
@@ -35,15 +36,22 @@ export default function Events() {
                 <div className="flex flex-col lg:flex-row gap-8">
                   {event.coverImage && (
                     <div className="lg:w-1/3">
-                      <img
-                        src={event.coverImage}
-                        alt={event.title}
-                        className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all"
-                      />
+                      <Link href={`/events/${event.slug}`}>
+                        <img
+                          src={event.coverImage}
+                          alt={event.title}
+                          className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all"
+                        />
+                      </Link>
                     </div>
                   )}
                   <div className="flex-1">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                      {event.format && (
+                        <span className="bg-red-500/10 border border-red-500/40 text-red-400 text-[10px] px-2.5 py-1 uppercase font-bold tracking-widest flex items-center gap-1.5">
+                          <Swords size={12} /> Live 1v1 Tournament
+                        </span>
+                      )}
                       {event.tags.map(tag => (
                         <span key={tag} className="border border-gray-700 text-gray-400 text-[10px] px-2 py-1 uppercase font-bold tracking-widest">
                           {tag}
@@ -51,13 +59,21 @@ export default function Events() {
                       ))}
                     </div>
                     <h3 className="text-2xl font-black text-white uppercase mb-4 group-hover:text-js-yellow transition-colors">
-                      {event.title}
+                      <Link href={`/events/${event.slug}`}>
+                        {event.title}
+                      </Link>
                     </h3>
                     <p className="text-gray-400 mb-6">{event.description}</p>
-                    <div className="flex flex-wrap gap-6 text-sm text-gray-500 mb-6">
+                    <div className="flex flex-wrap gap-6 text-sm text-gray-500 mb-6 font-mono">
                       <div className="flex items-center gap-2">
                         <Calendar size={16} className="text-js-yellow" />
-                        {new Date(event.date).toLocaleDateString()}
+                        {new Date(event.date).toLocaleDateString('en-UG', {
+                          weekday: 'short',
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                          timeZone: 'Africa/Kampala'
+                        })}
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock size={16} className="text-js-yellow" />
@@ -68,11 +84,16 @@ export default function Events() {
                         {event.venue}
                       </div>
                     </div>
-                    {event.ticketsUrl && (
-                      <Button href={event.ticketsUrl} icon={Ticket}>
-                        Get Tickets
+                    <div className="flex flex-wrap gap-4">
+                      {event.ticketsUrl && (
+                        <Button href={event.ticketsUrl} icon={Ticket}>
+                          Reserve Seat
+                        </Button>
+                      )}
+                      <Button variant="outline" href={`/events/${event.slug}`} icon={ArrowRight}>
+                        Rules &amp; Match Intel
                       </Button>
-                    )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -102,7 +123,9 @@ export default function Events() {
                     </span>
                   ))}
                 </div>
-                <h3 className="text-lg font-bold text-white uppercase mb-2">{event.title}</h3>
+                <h3 className="text-lg font-bold text-white uppercase mb-2 hover:text-js-yellow transition-colors">
+                  <Link href={`/events/${event.slug}`}>{event.title}</Link>
+                </h3>
                 <div className="text-xs text-gray-500 font-mono">
                   {new Date(event.date).toLocaleDateString()} • {event.venue}
                 </div>

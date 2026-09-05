@@ -2,6 +2,76 @@ import { BlogPost, Event, GalleryItem, Leader, Sponsor, Project } from './types'
 
 export const EVENTS: Event[] = [
   {
+    slug: 'kampala-coders-cup-2026',
+    title: "Kampala Coders' Cup 2026: Live 1v1 Algorithmic Showdown",
+    date: '2026-11-07T14:00:00+03:00',
+    time: '02:00 PM - 05:00 PM',
+    venue: "Africa's Talking Office",
+    address: 'Victoria Park, Block B, Kampala',
+    city: 'Kampala',
+    status: 'upcoming',
+    format: 'Live 1v1 Knockout Cup (Single Elimination)',
+    description: "East Africa's premier live 1v1 competitive programming tournament inspired by the HackSussex Coders' Cup. 8 elite coders clash head-to-head on the big screen in front of a live audience. Solve algorithmic challenges under extreme time pressure in any programming language of your choice. Strictly zero AI tools permitted.",
+    tags: ['Competition', 'Live Tournament', 'Algorithms', 'No-AI', 'Polyglot'],
+    ticketsUrl: 'https://www.ticketdaddy.io/',
+    videoUrl: 'https://youtu.be/EJPkNt7HbZM',
+    coverImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=2070',
+    rules: [
+      {
+        title: 'Polyglot Playground (Any Language)',
+        highlight: 'Freedom of Choice',
+        description: 'Competitors can write solutions in ANY programming language (TypeScript, JavaScript, Python, Go, Rust, C++, Java, etc.). You bring your language mastery; we provide the standard test harnesses.'
+      },
+      {
+        title: 'Zero AI Usage Policy',
+        highlight: 'Strictly Enforced',
+        description: 'No GitHub Copilot, Cursor, ChatGPT, Claude, tab autocompletions, or generative assistants of any kind are permitted. All solutions must be reasoned and authored from pure human cognition.'
+      },
+      {
+        title: '1v1 Head-to-Head Knockout',
+        highlight: 'HackSussex Format',
+        description: 'Live bracket single-elimination battles. Code editor feeds projected side-by-side with live test suite progress, live shoutcasters, and spectator hype.'
+      },
+      {
+        title: 'Instant Automated Test Harness',
+        highlight: 'Live Evaluation',
+        description: 'Deterministic test cases run live on screen. The first competitor to pass 100% of test cases (or highest passing rate when the timer expires) advances to the next round.'
+      }
+    ],
+    bracket: [
+      { id: 'm1', round: 'Quarterfinal 1', player1: 'Seed 1', player2: 'Seed 8' },
+      { id: 'm2', round: 'Quarterfinal 2', player1: 'Seed 4', player2: 'Seed 5' },
+      { id: 'm3', round: 'Quarterfinal 3', player1: 'Seed 2', player2: 'Seed 7' },
+      { id: 'm4', round: 'Quarterfinal 4', player1: 'Seed 3', player2: 'Seed 6' },
+      { id: 'm5', round: 'Semifinal 1', player1: 'Winner QF 1', player2: 'Winner QF 2' },
+      { id: 'm6', round: 'Semifinal 2', player1: 'Winner QF 3', player2: 'Winner QF 4' },
+      { id: 'm7', round: 'Grand Final', player1: 'Winner SF 1', player2: 'Winner SF 2' }
+    ],
+    speakers: [
+      {
+        name: 'Tournament Cast & Commentary Team',
+        role: "JS Kampala & Africa's Talking",
+        topic: 'Live Match Casting, Play-by-Play & Edge-Case Analysis',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'
+      },
+      {
+        name: 'Arbitration & Benchmarking Jury',
+        role: 'Technical Lead Judges',
+        topic: 'Polyglot Test Runner & Strict Zero-AI Auditing',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200'
+      }
+    ],
+    agenda: [
+      { time: '02:00 PM', title: 'Arrival, Environment Setup & Bracket Reveal' },
+      { time: '02:25 PM', title: 'Opening Remarks & Code-of-Combat Rules Briefing' },
+      { time: '02:35 PM', title: 'Quarterfinals: 1v1 Speed Rounds (4 Matches • 10m sprints)' },
+      { time: '03:25 PM', title: "Halftime Break & Africa's Talking Tech Spotlight" },
+      { time: '03:40 PM', title: 'Semifinals: Deep Algorithmic Duels (2 Matches • 15m deep dives)' },
+      { time: '04:20 PM', title: 'Grand Final: The Championship Duel (20m Showdown)' },
+      { time: '04:45 PM', title: 'Awards Ceremony, Trophy Presentation & Networking Mixer' }
+    ]
+  },
+  {
     slug: 'js-kampala-summit-2025',
     title: 'JS Kampala Summit 2025: The Future of Web',
     date: '2025-10-24T09:00:00Z',
@@ -9,7 +79,7 @@ export const EVENTS: Event[] = [
     venue: 'Kampala Serena Hotel',
     address: 'Kintu Road, Kampala',
     city: 'Kampala',
-    status: 'upcoming',
+    status: 'past',
     description: 'The premier engineering conference in East Africa. Join 500+ developers for a full day of deep dives into React Server Components, AI Engineering, and Cloud Architecture.',
     tags: ['Conference', 'Architecture', 'AI'],
     ticketsUrl: 'https://eventbrite.com',
@@ -43,7 +113,7 @@ export const EVENTS: Event[] = [
     venue: 'Innovation Village',
     address: 'Ntinda Complex',
     city: 'Kampala',
-    status: 'upcoming',
+    status: 'past',
     description: 'A deep dive into designing scalable distributed systems. Perfect for Senior Engineers looking to level up.',
     tags: ['System Design', 'Backend', 'Workshop'],
     coverImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000',
@@ -139,6 +209,14 @@ export const SPONSORS: Sponsor[] = [
     logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Andela_logo.png',
     url: 'https://www.andela.com/',
     description: 'Connecting talent.'
+  },
+  {
+    id: '5',
+    name: "Africa's Talking",
+    tier: 'Gold',
+    logo: 'https://africastalking.com/img/favicon.png',
+    url: 'https://africastalking.com/',
+    description: 'Powering communication & cloud infrastructure across Africa.'
   }
 ];
 
