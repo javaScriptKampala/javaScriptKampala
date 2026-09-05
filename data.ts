@@ -2,8 +2,8 @@ import { BlogPost, Event, GalleryItem, Leader, Sponsor, Project } from './types'
 
 export const EVENTS: Event[] = [
   {
-    slug: 'kampala-coders-cup-2026',
-    title: "Kampala Coders' Cup 2026: Live 1v1 Algorithmic Showdown",
+    slug: 'jsk-code-wars-edition-2',
+    title: "JSK Code Wars Edition 2",
     date: '2026-11-07T14:00:00+03:00',
     time: '02:00 PM - 05:00 PM',
     venue: "Africa's Talking Office",

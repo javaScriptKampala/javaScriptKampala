@@ -263,7 +263,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                         <span className="text-xs text-js-yellow font-bold">FINALIST 2</span>
                       </div>
                       <div className="mt-4 pt-3 border-t border-gray-800 text-center text-[10px] text-gray-400 uppercase tracking-widest">
-                        Winner receives the 2026 Coders&apos; Cup Trophy
+                        Winner receives the JSK Code Wars Edition 2 Trophy
                       </div>
                     </div>
                   ))}
