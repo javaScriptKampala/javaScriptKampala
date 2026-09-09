@@ -13,6 +13,21 @@ export interface AgendaItem {
   speaker?: string;
 }
 
+export interface TournamentMatch {
+  id: string;
+  round: string;
+  player1: string;
+  player2: string;
+  winner?: string;
+  score?: string;
+}
+
+export interface TournamentRule {
+  title: string;
+  description: string;
+  highlight?: string;
+}
+
 export interface Event {
   slug: string;
   title: string;
@@ -28,6 +43,11 @@ export interface Event {
   tags: string[];
   status: 'upcoming' | 'past';
   description: string;
+  format?: string;
+  rules?: TournamentRule[];
+  bracket?: TournamentMatch[];
+  videoUrl?: string;
+  venueMapUrl?: string;
 }
 
 export interface BlogPost {

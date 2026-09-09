@@ -5,25 +5,14 @@ import Link from 'next/link';
 import {
   ArrowRight, Calendar, Zap, Github, CheckCircle, Ticket, MapPin,
   Terminal, Activity, Users, Monitor, Play,
-  Star, GitFork
+  Star, GitFork, X
 } from 'lucide-react';
 import { Button, Section, Card, Heading, Badge } from '../components/UI';
 import { EVENTS, BLOG_POSTS, SPONSORS, PROJECTS } from '../data';
 import SponsorsComponent from '@/components/sponsers';
 
 const HeroVideo = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const togglePlayback = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (video.paused) {
-      video.play().catch(() => {}); // handle autoplay block gracefully
-    } else {
-      video.pause();
-    }
-  };
 
   return (
     <div className="w-full h-full bg-[#050505] relative flex flex-col overflow-hidden border-l border-gray-800 my-4">
@@ -31,11 +20,11 @@ const HeroVideo = () => {
       <div className="h-14 sm:h-16 border-b border-gray-800 bg-[#0a0a0a] flex items-center justify-between px-4 sm:px-6 relative z-20">
         <div className="flex flex-col">
           <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-0.5">Spotlight</span>
-          <div className="text-xs font-mono uppercase tracking-widest text-js-yellow">Community Reel</div>
+          <div className="text-xs font-mono uppercase tracking-widest text-js-yellow">JSK Dev Quiz Night Recap</div>
         </div>
         <div className="text-right hidden xs:block">
-          <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-0.5">Runtime</div>
-          <div className="text-js-yellow font-bold font-mono text-sm">02:34</div>
+          <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-0.5">Source</div>
+          <div className="text-js-yellow font-bold font-mono text-sm">YouTube</div>
         </div>
       </div>
 
@@ -43,44 +32,61 @@ const HeroVideo = () => {
       <div className="grow relative bg-[#080808] flex items-center justify-center p-3 sm:p-4 lg:p-6 h-125">
         <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-sm">
           <div className="w-full max-w-[min(94%,1200px)] mx-auto h-full sm:h-auto aspect-[9/16] xs:aspect-[4/5] sm:aspect-video bg-[#0b0b0b] border border-gray-800 shadow-[0_0_60px_rgba(247,223,30,0.12)] relative overflow-hidden">
-            {/* Video wrapper with gradient overlay */}
-            <div className="relative w-full h-full">
-              <video
-                ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover"
-                src="/test-video.mp4"
-                preload="metadata"
-                playsInline
-                muted
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-                onClick={togglePlayback}
-              />
-              <div className="absolute inset-0 bg-linear-to-br from-black/55 via-transparent to-black/75 pointer-events-none" />
-
-              {!isPlaying && (
+            {isPlaying ? (
+              <div className="relative w-full h-full">
+                <iframe
+                  className="w-full h-full absolute inset-0 border-0"
+                  src="https://www.youtube-nocookie.com/embed/YH0t-0MbSoI?autoplay=1&rel=0&modestbranding=1"
+                  title="JSK Dev Quiz Night 2026 Recap"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
                 <button
-                  className="absolute inset-0 flex flex-col items-center justify-center group touch-manipulation"
-                  aria-label="Play community reel"
-                  onClick={togglePlayback}
+                  type="button"
+                  onClick={() => setIsPlaying(false)}
+                  className="absolute top-3 right-3 z-40 bg-black/80 hover:bg-js-yellow hover:text-black text-white p-1.5 border border-gray-800 text-xs transition-colors"
+                  aria-label="Close video player"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            ) : (
+              <div className="relative w-full h-full group">
+                <img
+                  className="absolute inset-0 w-full h-full object-cover brightness-85 group-hover:scale-105 transition-transform duration-500"
+                  src="https://i.ytimg.com/vi/YH0t-0MbSoI/maxresdefault.jpg"
+                  alt="JSK Dev Quiz Night 2026 Recap"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-linear-to-br from-black/55 via-transparent to-black/75 pointer-events-none" />
+
+                <button
+                  type="button"
+                  className="absolute inset-0 flex flex-col items-center justify-center group touch-manipulation cursor-pointer"
+                  aria-label="Play JSK Dev Quiz Night recap"
+                  onClick={() => setIsPlaying(true)}
                 >
                   <div className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 bg-js-yellow rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(247,223,30,0.4)] group-hover:scale-105 group-active:scale-95 transition-transform duration-200">
                     <Play size={40} className="text-black ml-1.5 fill-black xs:size-12 sm:size-[52px]" />
                   </div>
                   <div className="mt-5 xs:mt-6 text-js-yellow font-mono text-xs xs:text-sm uppercase tracking-[0.3em] text-center px-5 sm:px-0">
-                    Watch The Network
+                    Watch Recap Video
                   </div>
                 </button>
-              )}
-            </div>
 
-            <div className="absolute left-0 right-0 bottom-0 px-4 sm:px-6 py-3.5 sm:py-4 border-t border-gray-800 flex items-center justify-between bg-black/65 backdrop-blur-md">
-              <div>
-                <div className="text-white font-black uppercase tracking-widest text-sm sm:text-base">Kampala JS</div>
-                <div className="text-gray-400 text-[11px] sm:text-xs font-mono uppercase tracking-widest mt-0.5">Community Reel</div>
+                <div className="absolute left-0 right-0 bottom-0 px-4 sm:px-6 py-3.5 sm:py-4 border-t border-gray-800 flex items-center justify-between bg-black/65 backdrop-blur-md">
+                  <div>
+                    <div className="text-white font-black uppercase tracking-widest text-sm sm:text-base">
+                      JSK Dev Quiz Night
+                    </div>
+                    <div className="text-gray-400 text-[11px] sm:text-xs font-mono uppercase tracking-widest mt-0.5">
+                      2026 Community Recap
+                    </div>
+                  </div>
+                  <Badge color="yellow">FEATURED</Badge>
+                </div>
               </div>
-              <Badge color="yellow">FEATURED</Badge>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -209,8 +215,15 @@ const FeaturedEvent = () => {
       <div className="grid lg:grid-cols-2 min-h-150">
         {/* Text Content Left */}
         <div className="p-12 lg:p-24 flex flex-col justify-center bg-[#080808]">
-          <div className="mb-8 flex items-center gap-3">
-            <Badge color="yellow">Upcoming Summit</Badge>
+          <div className="mb-8 flex flex-wrap items-center gap-3">
+            <Badge color="yellow">
+              {nextEvent.format ? "Upcoming Tournament" : "Upcoming Event"}
+            </Badge>
+            {nextEvent.rules && (
+              <span className="bg-red-500/10 border border-red-500/40 text-red-400 text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-1">
+                Live 1v1 • Zero AI
+              </span>
+            )}
             <span className="text-gray-500 font-mono text-xs uppercase tracking-wider">
               Don&apos;t miss out
             </span>
@@ -230,8 +243,12 @@ const FeaturedEvent = () => {
                 </div>
                 <div className="text-white text-lg font-bold">
                   {new Date(nextEvent.date).toLocaleDateString("en-UG", {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
                     timeZone: "Africa/Kampala",
-                  })}
+                  })}{" "}
                   — {nextEvent.time}
                 </div>
               </div>
@@ -246,6 +263,9 @@ const FeaturedEvent = () => {
                 </div>
                 <div className="text-white text-lg font-bold">
                   {nextEvent.venue}
+                </div>
+                <div className="text-xs text-gray-400 font-mono">
+                  {nextEvent.address}
                 </div>
               </div>
             </div>
@@ -264,7 +284,7 @@ const FeaturedEvent = () => {
               href={`/events/${nextEvent.slug}`}
               className="w-full sm:w-auto"
             >
-              Event Details
+              Tournament Intel &amp; Rules
             </Button>
           </div>
         </div>
