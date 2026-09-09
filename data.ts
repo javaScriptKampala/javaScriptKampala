@@ -1,4 +1,7 @@
-import { BlogPost, Event, GalleryItem, Leader, Sponsor, Project } from './types';
+import {
+  BlogPost, Event, GalleryItem, Leader, Sponsor, Project,
+  SponsorTier, PerEventSponsorship, InKindOption
+} from './types';
 
 export const EVENTS: Event[] = [
   {
@@ -217,6 +220,154 @@ export const SPONSORS: Sponsor[] = [
     logo: 'https://africastalking.com/img/favicon.png',
     url: 'https://africastalking.com/',
     description: 'Powering communication & cloud infrastructure across Africa.'
+  }
+];
+
+export const SPONSOR_CONTACT_EMAIL = 'javascriptkampala@gmail.com';
+
+export const SPONSOR_TIERS: SponsorTier[] = [
+  {
+    id: 'bronze',
+    name: 'Bronze Monthly Sponsor',
+    level: 'LEVEL_01',
+    emoji: '🥉',
+    contributionUGX: 'UGX 75,000',
+    contributionUSD: '~$20 USD',
+    period: 'per month',
+    tagline: 'Entry-level recurring support for individuals and emerging startups',
+    benefits: [
+      "Small logo on the JavaScript Community Uganda website's dedicated sponsors page",
+      'Mention in a monthly "Thank You" social media post to all our Bronze Monthly Supporters',
+      'Verbal acknowledgement as a Bronze Monthly Supporter during opening remarks at one community meetup per quarter',
+      'Early access to information about upcoming community initiatives',
+      '1 complimentary ticket to one paid community workshop or mini-conference every 6 months'
+    ]
+  },
+  {
+    id: 'silver',
+    name: 'Silver Monthly Sponsor',
+    level: 'LEVEL_02',
+    emoji: '🥈',
+    contributionUGX: 'UGX 150,000',
+    contributionUSD: '~$42 USD',
+    period: 'per month',
+    tagline: 'Growing visibility and quarterly speaking opportunity for engineering teams',
+    benefits: [
+      'All Bronze Monthly Supporter benefits included',
+      "Logo (medium) on the JavaScript Community Uganda website's dedicated sponsors page and on event-specific pages for regular meetups",
+      'Individual social media "Thank You" mention with company tag once per quarter',
+      'Verbal acknowledgement as a Silver Monthly Backer during opening and closing remarks at one community meetup per month',
+      'A 15-minute speaking slot (lightning talk) at one community meetup per quarter to share insights, company culture, or relevant tech (content mutually agreed upon)',
+      'Opportunity to display a small pop-up banner (sponsor-provided) at one physical meetup per quarter',
+      '1 complimentary ticket to one paid community workshop or mini-conference per quarter'
+    ]
+  },
+  {
+    id: 'gold',
+    name: 'Gold Monthly Sponsor',
+    level: 'LEVEL_03',
+    badge: 'Popular',
+    emoji: '🥇',
+    highlight: true,
+    contributionUGX: 'UGX 350,000',
+    contributionUSD: '~$100 USD',
+    period: 'per month',
+    tagline: 'Strategic partner visibility with hiring access, speaking slots, and homepage branding',
+    benefits: [
+      'All Silver Monthly Backer benefits included',
+      'Logo (large) prominently displayed on the JavaScript Community Uganda website (homepage footer & sponsors page) and on standard event materials (digital & physical)',
+      'Dedicated social media post highlighting your organization as a Gold Monthly Partner once per quarter',
+      'Verbal acknowledgement as a Gold Monthly Partner at all major community events and meetups',
+      'Opportunity to display a medium-sized banner (sponsor-provided) at all regular physical meetups',
+      'A 30-60 minute speaking slot at one community meetup per quarter to share insights, company culture, or relevant tech (content mutually agreed upon)',
+      'Option to distribute company-branded swag (sponsor-provided) at regular physical meetups',
+      'Option to share up to 3 relevant job openings per month on community channels',
+      '2 complimentary tickets to one paid community workshop or mini-conference per quarter',
+      "Brief company profile featured on the sponsors' page of the website",
+      'Priority consideration for partnership on special community initiatives'
+    ]
+  },
+  {
+    id: 'platinum',
+    name: 'Platinum Monthly Sponsor',
+    level: 'LEVEL_04',
+    badge: 'Title Partner',
+    emoji: '💎',
+    contributionUGX: 'UGX 700,000',
+    contributionUSD: '~$200 USD',
+    period: 'per month',
+    tagline: 'Premier community partnership with title co-hosting, keynote slots, and newsletter reach',
+    benefits: [
+      'All Gold Monthly Partner benefits included',
+      'Prominent logo placement on all JavaScript Community Uganda digital and physical assets (website homepage, event banners, presentations)',
+      'Exclusive dedicated social media campaign highlighting your organization and its contributions once per quarter',
+      'Opportunity to co-host or title sponsor one major community event (e.g., annual conference, hackathon) per year',
+      'Guaranteed 60-120 minutes speaking slot (keynote or featured speaker) at one community meetup or special event per quarter',
+      'Priority access and prominent display space for a dedicated booth or table at all major physical meetups and events',
+      'Option to distribute significant company-branded swag and marketing materials at all regular physical meetups and major events',
+      'Option to share up to 5 relevant job openings per month across all community channels, including a dedicated section in our monthly newsletter',
+      '4 complimentary tickets to all paid community workshops or mini-conferences per quarter, and VIP access to major events',
+      "Detailed company profile and interview featured on the sponsors' page of the website and in a dedicated blog post",
+      'Primary consideration and active collaboration on major community initiatives, research projects, or educational programs',
+      'Annual joint report highlighting the impact of your sponsorship on the community'
+    ]
+  }
+];
+
+export const PER_EVENT_SPONSORSHIP: PerEventSponsorship = {
+  title: 'Per-Event Sponsorship',
+  contributionUGX: 'Starting from UGX 250,000',
+  contributionUSD: '~$70 USD',
+  description: 'Ideal for organizations or individuals looking to make an impact around specific events, workshops, or conferences. Contribution is flexible based on event scale and desired visibility.',
+  coreBenefits: [
+    'Logo (medium) on all promotional materials for the sponsored event',
+    'Social media mentions leading up to and during the sponsored event',
+    'Verbal acknowledgement as an Event Champion during the sponsored event (opening and closing)',
+    'Opportunity to display a banner (sponsor-provided) at the sponsored event',
+    '2 complimentary tickets to the sponsored event',
+    'Option to provide a brief (1-2 min) address at the event'
+  ],
+  enhancedBenefits: [
+    'Larger logo placement, "Presented by" or "Headline Sponsor" recognition',
+    'Dedicated social media posts spotlighting your support',
+    'Dedicated booth/table space at the event venue',
+    'Extended speaking opportunities (e.g., keynote, workshop session)',
+    'Inclusion of branded materials in attendee swag bags (if applicable)',
+    'More complimentary tickets / VIP access',
+    'Opportunity to co-host or brand a specific segment of the event'
+  ]
+};
+
+export const IN_KIND_SPONSORSHIPS: InKindOption[] = [
+  {
+    title: 'Venue Hosting',
+    category: 'Spaces & Labs',
+    description: 'Hosting meetups, workshops, hackathons, or study groups in accessible, equipped tech spaces.'
+  },
+  {
+    title: 'Food & Beverages',
+    category: 'Catering & Hospitality',
+    description: 'Providing meals, snacks, water, and refreshments for community attendees and speakers.'
+  },
+  {
+    title: 'Software Licenses & Tooling',
+    category: 'Developer Resources',
+    description: 'Sponsoring developer software licenses, cloud computing credits, or developer tools for community members.'
+  },
+  {
+    title: 'Expert Speakers & Trainers',
+    category: 'Technical Talent',
+    description: 'Offering seasoned engineers and industry specialists to lead hands-on masterclasses and workshops.'
+  },
+  {
+    title: 'Swag & Merchandise',
+    category: 'Community Merch',
+    description: 'Supplying T-shirts, stickers, notebooks, tote bags, and lanyards for community members.'
+  },
+  {
+    title: 'Technical Infrastructure',
+    category: 'Production & Cloud',
+    description: 'Providing streaming equipment, recording services, audio-visual production, or web and cloud hosting.'
   }
 ];
 

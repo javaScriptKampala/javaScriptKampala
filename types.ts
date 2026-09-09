@@ -66,9 +66,38 @@ export interface BlogPost {
 export interface Sponsor {
   id: string;
   name: string;
-  tier: 'Gold' | 'Silver' | 'Bronze' | 'Partner';
+  tier: 'Platinum' | 'Gold' | 'Silver' | 'Bronze' | 'Partner';
   logo: string;
   url: string;
+  description: string;
+}
+
+export interface SponsorTier {
+  id: string;
+  name: string;
+  level: string;
+  badge?: string;
+  emoji: string;
+  contributionUGX: string;
+  contributionUSD: string;
+  period: string;
+  tagline: string;
+  highlight?: boolean;
+  benefits: string[];
+}
+
+export interface PerEventSponsorship {
+  title: string;
+  contributionUGX: string;
+  contributionUSD: string;
+  description: string;
+  coreBenefits: string[];
+  enhancedBenefits: string[];
+}
+
+export interface InKindOption {
+  title: string;
+  category: string;
   description: string;
 }
 
