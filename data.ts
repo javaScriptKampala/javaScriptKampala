@@ -14,9 +14,9 @@ export const EVENTS: Event[] = [
     city: 'Kampala',
     status: 'upcoming',
     format: 'Live 1v1 Knockout Cup (Single Elimination)',
-    description: "East Africa's premier live 1v1 competitive programming tournament inspired by the HackSussex Coders' Cup. 8 elite coders clash head-to-head on the big screen in front of a live audience. Solve algorithmic challenges under extreme time pressure in any programming language of your choice. Strictly zero AI tools permitted.",
+    description: "Uganda's first 1v1 competitive programming tournament where 8 elite coders clash head-to-head on the big screen in front of a live audience. Solve algorithmic challenges under extreme time pressure in any programming language of your choice. Strictly zero AI tools permitted.",
     tags: ['Competition', 'Live Tournament', 'Algorithms', 'No-AI', 'Polyglot'],
-    ticketsUrl: 'https://www.ticketdaddy.io/',
+    ticketsUrl: 'https://ticketdaddy.io/ev/event_mii_F2ojt',
     videoUrl: 'https://youtu.be/EJPkNt7HbZM',
     coverImage: '/codewars-poster.jpeg',
     rules: [
