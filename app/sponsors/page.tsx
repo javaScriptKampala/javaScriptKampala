@@ -27,7 +27,7 @@ export default function SponsorsPage() {
   return (
     <div className="min-h-screen bg-js-black text-white selection:bg-js-yellow selection:text-black">
       {/* Hero Section */}
-      <div className="bg-[#050505] border-b border-gray-800 pt-32 pb-20 relative overflow-hidden">
+      <div className="bg-[#050505] border-b border-gray-800 pt-20 pb-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-js-yellow/5 skew-x-12 transform origin-top-right pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,223,30,0.06),transparent_50%)] pointer-events-none" />
 

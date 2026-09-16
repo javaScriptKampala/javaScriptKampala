@@ -18,7 +18,7 @@ export const EVENTS: Event[] = [
     tags: ['Competition', 'Live Tournament', 'Algorithms', 'No-AI', 'Polyglot'],
     ticketsUrl: 'https://www.ticketdaddy.io/',
     videoUrl: 'https://youtu.be/EJPkNt7HbZM',
-    coverImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=2070',
+    coverImage: '/codewars-poster.jpeg',
     rules: [
       {
         title: 'Polyglot Playground (Any Language)',

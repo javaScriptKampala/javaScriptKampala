@@ -10,7 +10,7 @@ export default function Events() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-[#050505] border-b border-gray-800 pt-32 pb-20 relative overflow-hidden">
+      <div className="bg-[#050505] border-b border-gray-800 pt-20 pb-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-js-yellow/5 skew-x-12 transform origin-top-right pointer-events-none"></div>
         <Section noPadding>
           <div className="max-w-4xl">

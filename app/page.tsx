@@ -290,16 +290,16 @@ const FeaturedEvent = () => {
         </div>
 
         {/* Image Content Right */}
-        <div className="relative h-100 lg:h-auto border-t lg:border-t-0 lg:border-l border-gray-800 overflow-hidden group">
-          <div className="absolute inset-0 bg-js-yellow opacity-0 group-hover:opacity-10 transition-opacity z-10 mix-blend-overlay"></div>
+        <div className="relative min-h-100 lg:min-h-auto border-t lg:border-t-0 lg:border-l border-gray-800 overflow-hidden group bg-[#080808] flex items-center justify-center p-6 sm:p-8">
+          <div className="absolute inset-0 bg-js-yellow opacity-0 group-hover:opacity-5 transition-opacity z-10 pointer-events-none"></div>
           <img
             src={nextEvent.coverImage}
             alt={nextEvent.title}
-            className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="w-full max-h-130 object-contain shadow-2xl transition-transform duration-500 group-hover:scale-102"
           />
-          <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black to-transparent p-8 z-20">
-            <div className="text-white font-mono text-xs uppercase tracking-widest mb-2">
-              Featured Event
+          <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/80 to-transparent p-6 z-20 pointer-events-none">
+            <div className="text-white font-mono text-xs uppercase tracking-widest">
+              Featured Event Poster
             </div>
           </div>
         </div>
