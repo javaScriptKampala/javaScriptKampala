@@ -17,7 +17,7 @@ export default function Join() {
 
   return (
     <>
-      <div className="bg-[#050505] border-b border-gray-800 pt-32 pb-20">
+      <div className="bg-[#050505] border-b border-gray-800 pt-20 pb-20">
          <Section noPadding>
             <div className="max-w-4xl">
                <Badge color="yellow" className="mb-6">Membership</Badge>

@@ -24,7 +24,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   return (
     <article className="min-h-screen bg-js-black text-white">
       {/* Hero Banner */}
-      <div className="bg-[#060606] border-b border-gray-800 pt-28 sm:pt-32 pb-16 relative overflow-hidden">
+      <div className="bg-[#060606] border-b border-gray-800 pt-20 pb-16 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-js-yellow/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,223,30,0.06),transparent_50%)] pointer-events-none" />
 
@@ -54,74 +54,93 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               ))}
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase leading-[0.95] tracking-tight mb-8">
-              {event.title}
-            </h1>
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-4">
+              <div className={event.coverImage ? "lg:col-span-8" : "lg:col-span-12"}>
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase leading-[0.95] tracking-tight mb-8">
+                  {event.title}
+                </h1>
 
-            <p className="text-gray-300 text-base sm:text-lg font-light leading-relaxed max-w-3xl mb-10 border-l-2 border-js-yellow pl-5">
-              {event.description}
-            </p>
+                <p className="text-gray-300 text-base sm:text-lg font-light leading-relaxed mb-10 border-l-2 border-js-yellow pl-5">
+                  {event.description}
+                </p>
 
-            {/* Quick Metadata Bar */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 border-t border-gray-800 pt-8 font-mono">
-              <div className="flex items-center gap-3 bg-[#0c0c0c] border border-gray-800/80 p-4">
-                <div className="w-10 h-10 bg-js-yellow/10 border border-js-yellow/30 flex items-center justify-center text-js-yellow shrink-0">
-                  <Calendar size={18} />
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500">Date</div>
-                  <div className="text-sm font-bold text-white">
-                    {new Date(event.date).toLocaleDateString('en-UG', {
-                      weekday: 'short',
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                      timeZone: 'Africa/Kampala'
-                    })}
+                {/* Quick Metadata Bar */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 border-t border-gray-800 pt-8 font-mono">
+                  <div className="flex items-center gap-3 bg-[#0c0c0c] border border-gray-800/80 p-4">
+                    <div className="w-10 h-10 bg-js-yellow/10 border border-js-yellow/30 flex items-center justify-center text-js-yellow shrink-0">
+                      <Calendar size={18} />
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-gray-500">Date</div>
+                      <div className="text-sm font-bold text-white">
+                        {new Date(event.date).toLocaleDateString('en-UG', {
+                          weekday: 'short',
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                          timeZone: 'Africa/Kampala'
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 bg-[#0c0c0c] border border-gray-800/80 p-4">
+                    <div className="w-10 h-10 bg-js-yellow/10 border border-js-yellow/30 flex items-center justify-center text-js-yellow shrink-0">
+                      <Clock size={18} />
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-gray-500">Time</div>
+                      <div className="text-sm font-bold text-white">{event.time} EAT</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 bg-[#0c0c0c] border border-gray-800/80 p-4 sm:col-span-2 lg:col-span-1">
+                    <div className="w-10 h-10 bg-js-yellow/10 border border-js-yellow/30 flex items-center justify-center text-js-yellow shrink-0">
+                      <MapPin size={18} />
+                    </div>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-widest text-gray-500">Venue</div>
+                      <div className="text-sm font-bold text-white">{event.venue}</div>
+                      <div className="text-xs text-gray-400">{event.address}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex items-center gap-3 bg-[#0c0c0c] border border-gray-800/80 p-4">
-                <div className="w-10 h-10 bg-js-yellow/10 border border-js-yellow/30 flex items-center justify-center text-js-yellow shrink-0">
-                  <Clock size={18} />
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500">Time</div>
-                  <div className="text-sm font-bold text-white">{event.time} EAT</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 bg-[#0c0c0c] border border-gray-800/80 p-4 sm:col-span-2 lg:col-span-1">
-                <div className="w-10 h-10 bg-js-yellow/10 border border-js-yellow/30 flex items-center justify-center text-js-yellow shrink-0">
-                  <MapPin size={18} />
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500">Venue</div>
-                  <div className="text-sm font-bold text-white">{event.venue}</div>
-                  <div className="text-xs text-gray-400">{event.address}</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            {event.ticketsUrl && (
-              <div className="flex flex-wrap items-center gap-4 mt-8 pt-4">
-                <Button href={event.ticketsUrl} icon={Ticket} className="text-sm font-black px-8 py-4">
-                  Get Free Spectator Pass
-                </Button>
-                {event.videoUrl && (
-                  <a
-                    href={event.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-gray-700 bg-black/60 hover:border-js-yellow hover:text-js-yellow text-white px-6 py-4 text-xs font-mono uppercase tracking-widest transition-colors"
-                  >
-                    Format Demo Video <ExternalLink size={14} />
-                  </a>
+                {/* Action Buttons */}
+                {event.ticketsUrl && (
+                  <div className="flex flex-wrap items-center gap-4 mt-8 pt-4">
+                    <Button href={event.ticketsUrl} icon={Ticket} className="text-sm font-black px-8 py-4">
+                      Get Free Spectator Pass
+                    </Button>
+                    {event.videoUrl && (
+                      <a
+                        href={event.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 border border-gray-700 bg-black/60 hover:border-js-yellow hover:text-js-yellow text-white px-6 py-4 text-xs font-mono uppercase tracking-widest transition-colors"
+                      >
+                        Format Demo Video <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
-            )}
+
+              {event.coverImage && (
+                <div className="lg:col-span-4 bg-[#0c0c0c] border border-gray-800 p-3 shadow-[0_0_40px_rgba(247,223,30,0.08)]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-js-yellow font-bold mb-2.5 text-center">
+                    Official Event Poster
+                  </div>
+                  <div className="border border-gray-900 overflow-hidden bg-black">
+                    <img
+                      src={event.coverImage}
+                      alt={event.title}
+                      className="w-full h-auto object-contain hover:scale-102 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </Section>
       </div>
