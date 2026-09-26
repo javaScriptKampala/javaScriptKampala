@@ -207,7 +207,9 @@ const MetricsStrip = () => {
 };
 
 const FeaturedEvent = () => {
-  const nextEvent = EVENTS.find((e) => e.status === "upcoming");
+  const upcomingEvents = EVENTS.filter((e) => e.status === "upcoming");
+  const [selectedSlug, setSelectedSlug] = useState(upcomingEvents[0]?.slug);
+  const nextEvent = upcomingEvents.find((e) => e.slug === selectedSlug) || upcomingEvents[0];
   if (!nextEvent) return null;
 
   return (
@@ -215,13 +217,35 @@ const FeaturedEvent = () => {
       <div className="grid lg:grid-cols-2 min-h-150">
         {/* Text Content Left */}
         <div className="p-12 lg:p-24 flex flex-col justify-center bg-[#080808]">
+          {upcomingEvents.length > 1 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {upcomingEvents.map((evt) => (
+                <button
+                  key={evt.slug}
+                  onClick={() => setSelectedSlug(evt.slug)}
+                  className={`text-xs font-mono uppercase tracking-wider px-3 py-1.5 transition-colors border cursor-pointer ${
+                    (selectedSlug || upcomingEvents[0].slug) === evt.slug
+                      ? "bg-js-yellow text-black border-js-yellow font-bold"
+                      : "bg-black/60 text-gray-400 border-gray-800 hover:border-gray-600 hover:text-white"
+                  }`}
+                >
+                  {new Date(evt.date).toLocaleDateString("en-UG", { month: "short", day: "numeric", timeZone: "Africa/Kampala" })} &bull; {evt.title}
+                </button>
+              ))}
+            </div>
+          )}
+
           <div className="mb-8 flex flex-wrap items-center gap-3">
             <Badge color="yellow">
-              {nextEvent.format ? "Upcoming Tournament" : "Upcoming Event"}
+              {nextEvent.rules ? "Upcoming Tournament" : "Upcoming Meetup"}
             </Badge>
-            {nextEvent.rules && (
+            {nextEvent.rules ? (
               <span className="bg-red-500/10 border border-red-500/40 text-red-400 text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-1">
                 Live 1v1 • Zero AI
+              </span>
+            ) : (
+              <span className="bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 text-[10px] font-mono uppercase font-bold tracking-widest px-2.5 py-1">
+                Free • Inclusive to All
               </span>
             )}
             <span className="text-gray-500 font-mono text-xs uppercase tracking-wider">
@@ -272,19 +296,21 @@ const FeaturedEvent = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              href={nextEvent.ticketsUrl}
-              icon={Ticket}
-              className="w-full sm:w-auto"
-            >
-              Reserve Seat
-            </Button>
+            {nextEvent.ticketsUrl && (
+              <Button
+                href={nextEvent.ticketsUrl}
+                icon={Ticket}
+                className="w-full sm:w-auto"
+              >
+                {nextEvent.rules ? "Reserve Seat" : "RSVP For Free"}
+              </Button>
+            )}
             <Button
               variant="outline"
               href={`/events/${nextEvent.slug}`}
               className="w-full sm:w-auto"
             >
-              Tournament Intel &amp; Rules
+              {nextEvent.rules ? "Tournament Intel & Rules" : "Event Details & Schedule"}
             </Button>
           </div>
         </div>

@@ -110,7 +110,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 {event.ticketsUrl && (
                   <div className="flex flex-wrap items-center gap-4 mt-8 pt-4">
                     <Button href={event.ticketsUrl} icon={Ticket} className="text-sm font-black px-8 py-4">
-                      Get Free Spectator Pass
+                      {event.rules ? "Get Free Spectator Pass" : "RSVP for Free"}
                     </Button>
                     {event.videoUrl && (
                       <a
@@ -334,10 +334,12 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   Host &amp; Venue Partner
                 </div>
                 <h2 className="text-3xl font-black uppercase tracking-tight text-white">
-                  Africa&apos;s Talking Uganda Office
+                  {event.venue}
                 </h2>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  Join us in-person at Africa&apos;s Talking Office. Experience the intense action with live high-definition code screens, live audio commentary, and direct networking with Uganda&apos;s top software engineers and architects.
+                  {event.rules
+                    ? "Join us in-person at Africa's Talking Office. Experience the intense action with live high-definition code screens, live audio commentary, and direct networking with Uganda's top software engineers and architects."
+                    : `Join us in-person at ${event.venue}. Connect with Kampala's JavaScript developers, students, and engineers in an open, welcoming, and inclusive community setting.`}
                 </p>
                 <div className="font-mono text-xs text-gray-300 space-y-1 pt-2">
                   <div className="flex items-center gap-2">
@@ -346,7 +348,11 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   </div>
                   <div className="flex items-center gap-2">
                     <Users size={14} className="text-js-yellow shrink-0" />
-                    <span>In-person spectator seating limited to registered attendees.</span>
+                    <span>
+                      {event.rules
+                        ? "In-person spectator seating limited to registered attendees."
+                        : "Free entry & open seating for all registered attendees."}
+                    </span>
                   </div>
                 </div>
               </div>
