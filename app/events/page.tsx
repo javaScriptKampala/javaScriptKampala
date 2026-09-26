@@ -47,11 +47,15 @@ export default function Events() {
                   )}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-4">
-                      {event.format && (
+                      {event.rules ? (
                         <span className="bg-red-500/10 border border-red-500/40 text-red-400 text-[10px] px-2.5 py-1 uppercase font-bold tracking-widest flex items-center gap-1.5">
                           <Swords size={12} /> Live 1v1 Tournament
                         </span>
-                      )}
+                      ) : event.format ? (
+                        <span className="bg-js-yellow/10 border border-js-yellow/30 text-js-yellow text-[10px] px-2.5 py-1 uppercase font-bold tracking-widest">
+                          {event.format}
+                        </span>
+                      ) : null}
                       {event.tags.map(tag => (
                         <span key={tag} className="border border-gray-700 text-gray-400 text-[10px] px-2 py-1 uppercase font-bold tracking-widest">
                           {tag}
@@ -87,11 +91,11 @@ export default function Events() {
                     <div className="flex flex-wrap gap-4">
                       {event.ticketsUrl && (
                         <Button href={event.ticketsUrl} icon={Ticket}>
-                          Reserve Seat
+                          {event.rules ? 'Reserve Seat' : 'RSVP for Free'}
                         </Button>
                       )}
                       <Button variant="outline" href={`/events/${event.slug}`} icon={ArrowRight}>
-                        Rules &amp; Match Intel
+                        {event.rules ? 'Rules & Match Intel' : 'Event Details'}
                       </Button>
                     </div>
                   </div>

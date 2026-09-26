@@ -5,6 +5,43 @@ import {
 
 export const EVENTS: Event[] = [
   {
+    slug: 'jsk-monthly-meet-up',
+    title: 'JSK Monthly Meet Up',
+    date: '2026-10-03T14:00:00+03:00',
+    time: '02:00 PM - 05:00 PM',
+    venue: "Africa's Talking Office",
+    address: 'Acacia Place, John Babiha Avenue, Kampala',
+    city: 'Kampala',
+    status: 'upcoming',
+    format: 'Community Meetup & Workshop',
+    description: "Join us for the JSK Monthly Meet Up at Africa's Talking! A completely free, inclusive community gathering warmly welcoming men, ladies, students, beginners, and seasoned software engineers. Connect with fellow developers, share practical knowledge, explore modern JavaScript tools, and grow together in a supportive community space.",
+    tags: ['Meetup', 'Community', 'Inclusive', 'Free Entry', 'Students Welcome', 'Workshops'],
+    ticketsUrl: 'https://ticketdaddy.io',
+    coverImage: '/jsk-monthly-meetup-poster.jpeg',
+    speakers: [
+      {
+        name: 'JS Kampala Core Team & Mentors',
+        role: 'Community Facilitators',
+        topic: 'Community Welcome, Tech Lightning Talks & Open Q&A',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'
+      },
+      {
+        name: 'Student & Developer Voices',
+        role: 'Community Members',
+        topic: 'Student Showcases, First Projects & Web Dev Journeys',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200'
+      }
+    ],
+    agenda: [
+      { time: '02:00 PM', title: 'Arrivals, Welcome Coffee & Icebreaker Networking' },
+      { time: '02:30 PM', title: 'Opening Remarks & Community Intro (Inclusive to All)' },
+      { time: '03:00 PM', title: 'Interactive JavaScript & Web Dev Workshop' },
+      { time: '03:45 PM', title: 'Student & Peer Lightning Talks' },
+      { time: '04:15 PM', title: 'Open Mentorship Circles & Project Feedback' },
+      { time: '04:50 PM', title: 'Closing Remarks & Group Photo' }
+    ]
+  },
+  {
     slug: 'jsk-code-wars-edition-2',
     title: "JSK Code Wars Edition 2",
     date: '2026-11-07T14:00:00+03:00',
